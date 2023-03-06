@@ -1,0 +1,153 @@
+<div class='demo rainbow-bg'>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<div class="center">
+<button id="link" hidden onclick="rem();"></button>
+<p id="p" >
+This website is still under construction. </p><br>
+<p id="p2" >Please be patient.</p><br>
+<p id="p3"> Click anywhere to remove this text and enjoy the animation! 
+</p>
+</div>
+</div>
+
+<style>
+
+
+.center{
+display: flex;
+text-align: center;
+align-items: center;
+flex-direction: column;
+min-height: 95vh;
+font-size : 1.2rem;
+font-family: Arial;
+justify-content: center;
+
+} 
+
+
+body{
+user-select: none;
+animation: rainbow-bg 10s	 linear infinite;
+}
+@keyframes rainbow-bg{
+		0%{
+			background-color: rgb(255,0,0);
+		}
+		5%{
+			background-color: rgb(255,85,0);
+		}
+		10%{
+			background-color: rgb(255,170,0);
+		}
+		16%{
+			background-color: rgb(255,255,0);
+		}
+		21%{
+			background-color: rgb(170,255,0);
+		}
+	    26%{
+		background-color: rgb(85,255,0);
+		}
+		31%{
+			background-color: rgb(0,255,0);
+		}
+		37%{
+			background-color: rgb(0,255,85);
+		}
+		42%{
+			background-color: rgb(0,255,170);
+		}
+		47%{
+			background-color: rgb(0,255,255);
+		}
+		52%{
+			background-color: rgb(0,170,255);
+		}
+		59%{
+			background-color: rgb(0,85,255);
+		}
+		64%{
+			background-color: rgb(0,0,255);
+		}
+		69%{
+			background-color: rgb(85,0,255);
+		}
+		75%{
+			background-color: rgb(170,0,255);
+		}
+		80%{
+			background-color: rgb(255,0,255);
+		}
+		85%{
+			background-color: rgb(255,0,170);
+		}
+		92%{
+			background-color: rgb(255,0,85);
+		}
+		100%{
+		background-color: rgb(255,0,0);
+		}
+}
+
+@keyframes rainbow{
+		100%,0%{
+			color: rgb(255,0,0);
+		}
+		8%{
+			color: rgb(255,127,0);
+		}
+		16%{
+			color: rgb(255,255,0);
+		}
+		25%{
+			color: rgb(127,255,0);
+		}
+		33%{
+			color: rgb(0,255,0);
+		}
+		41%{
+			color: rgb(0,255,127);
+		}
+		50%{
+			color: rgb(0,255,255);
+		}
+		58%{
+			color: rgb(0,127,255);
+		}
+		66%{
+			color: rgb(0,0,255);
+		}
+		75%{
+			color: rgb(127,0,255);
+		}
+		83%{
+			color: rgb(255,0,255);
+		}
+		91%{
+			color: rgb(255,0,127);
+		}
+}
+</style>
+
+<script>
+document.body.onclick = function () {
+document.getElementById("link").click();
+} 
+
+const time = setTimeout(clixk, 20000);
+
+
+function clixk() {
+document.getElementById("link").click();
+} 
+
+function rem() {
+document.getElementById("p").remove();
+document.getElementById("p2").remove()
+document.getElementById("p3").remove()
+} 
+
+
+
+</script>
