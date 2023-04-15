@@ -11,6 +11,48 @@
     
 
     <style type="text/css" href="../app-assets/vendors/css/vendors.min.css">
+
+
+
+.loading-bar.top{
+			position: fixed;
+			top: 0;
+			left: 0;
+			height: 7px;
+			width: 100%;
+			background: linear-gradient(to right, #ff0000, #ff8000, #ffff00, #80ff00, #00ff00, #00ff80, #00ffff, #0080ff, #0000ff, #8000ff, #ff00ff, #ff0000);
+			background-size: 200% 100%;
+			animation: slidebg 5s linear infinite;
+		}
+
+.loading-bar.bottom {
+			position: fixed;
+			bottom: 0;
+			left: 0;
+			height: 7px;
+			width: 100%;
+			background: linear-gradient(to right, #ff0000, #ff8000, #ffff00, #80ff00, #00ff00, #00ff80, #00ffff, #0080ff, #0000ff, #8000ff, #ff00ff, #ff0000);
+			background-size: 200% 100%;
+			animation: slidebg 5s linear infinite;
+		}
+
+		@keyframes slidebg {
+			0% {
+				background-position: 0 0;
+			}
+			100% {
+				background-position: -200% 0;
+			}
+		}
+
+
+
+
+
+
+
+
+
 :root {
   --bs-blue: #00cfe8;
   --bs-indigo: #6610f2;
@@ -18967,6 +19009,9 @@ form .select2.error + .select2-container--default .select2-selection--multiple {
     position: relative;
     left: 0;
     padding-left: 1.5rem; } }
+
+
+
 </style>
     <style type="text/css" href="../assets/css/style.css"></style>
     <!DOCTYPE html>
@@ -19005,7 +19050,6 @@ form .select2.error + .select2-container--default .select2-selection--multiple {
 
 </body>
 
-</html></style>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/11.1.9/sweetalert2.min.css">
     <noscript>
@@ -19016,6 +19060,7 @@ form .select2.error + .select2-container--default .select2-selection--multiple {
 
 <body class="pace-done vertical-layout vertical-menu-modern blank-page navbar-floating footer-static  " data-open="click" data-menu="vertical-menu-modern" data-col="blank-page"><div class="pace pace-inactive"><div class="pace-progress" data-progress-text="100%" data-progress="99" style=" user-select: none; overflow: hidden; transform: translate3d(100%, 0px, 0px);">
   <div class="pace-progress-inner"></div>
+  
 </div>
 <div class="pace-activity"></div></div>
     <div class="app-content content ">
@@ -19054,7 +19099,8 @@ form .select2.error + .select2-container--default .select2-selection--multiple {
             </div>
         </div>
     </div>
-
+    <div class="loading-bar top"></div>
+    <div class="loading-bar bottom"></div>
    </script>
     <script>//<![CDATA[
 /*=========================================================================================
@@ -21279,7 +21325,7 @@ document.getElementById("loginForm").addEventListener("submit", function(e) {
   if(new Date() < new Date(document.getElementById("token").value.substring(22)) == true){
 
     if(document.getElementById("flexCheckDefault").checked == true){
-      localStorage.clear()
+      localStorage.removeItem("token");
       localStorage.setItem("token",token)
       
     }
@@ -21362,7 +21408,7 @@ setTimeout( () => {
     
     Swal.fire({
                         title: "Başarılı!",
-                        html: "Kayıtlı token ile giriş yapıldı. Token'ınızın süresi " + new Date(window.localStorage.token.substring(22)).toLocaleDateString("tr-TR") + " tarihinde sona eriyor.<hr><a href='#' style='color:#ff0000' onclick='window.localStorage.clear(); window.location.reload()'>Çıkış yap</a><hr><a style='color: #00ff00' href='https://discord.io/anduril' target='_blank'>Discord Sunucumuz</a>",
+                        html: 'Kayıtlı token ile giriş yapıldı. Tokenınızın süresi' + new Date(window.localStorage.token.substring(22)).toLocaleDateString("tr-TR") + ' tarihinde sona eriyor.<hr><a href="#" style="color: #FF0000;" onclick="window.localStorage.removeItem(\'token\'); window.location.reload()">Çıkış Yap</a><hr><a style="color: #00FF00;" href="https://discord.io/anduril" target="_blank">Discord Sunucumuz</a>',
                         icon: "success",
                         width: '400px',
                         showConfirmButton: false,
@@ -21373,7 +21419,7 @@ setTimeout( () => {
                     }).then(() => {
                       if(document.getElementById("flexCheckDefault").checked == true) localStorage.setItem("token",token)
 
-                        window.location.href = "../../redirect?token=" + token;
+                        //window.location.href = "../../redirect?token=" + token;
                         
                     })
 
