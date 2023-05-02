@@ -1,0 +1,252 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v6.0.0-beta3/css/all.css"
+  ntegrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA=="
+  crossorigin="anonymous" referrerpolicy="no-referrer">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/flowbite@1.5.4/dist/flowbite.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/flowbite@1.5.4/dist/flowbite.min.css" />
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+    /*window.onbeforeunload = function(){
+        return 'Emin misiniz?'
+    }*/
+
+    function panel(){
+      Swal.fire({
+        icon: 'error',
+        title: 'Seni aptal Libr*ral',
+        text: 'Mongol.sigma asla bir panel kurmaz! 3.1 yaşımda umumi alanda altıma sıçarak iş dünyasına atıldım.',
+      }).then(openFullscreen())
+    }
+
+    setTimeout( () => {
+    const element = document.getElementsByTagName("video")[0]
+      element.addEventListener('fullscreenchange', () => {
+        if (!document.fullscreenElement) {
+          console.log('Element exited fullscreen mode');
+          element.setAttribute("hidden",true)
+          element.pause();
+          element.currentTime = 0;
+        }
+      });
+      element.requestFullscreen();
+    },10);
+
+    function tik(e){
+      e.preventDefault()
+      console.log(e)
+      return false;
+    }
+   
+    function openFullscreen() {
+      var elem = document.getElementsByTagName("video")[0];
+      elem.play()
+      elem.removeAttribute("hidden")
+      elem.addEventListener("click",(e) => tik(e))
+      setTimeout(() => {
+        elem.setAttribute("hidden",true)
+        closeFullscreen();
+        elem.removeEventListener("click",tik())
+      },13000)
+  if (elem.requestFullscreen) {
+    elem.requestFullscreen();
+  } else if (elem.webkitRequestFullscreen) { /* Safari */
+    elem.webkitRequestFullscreen();
+  } else if (elem.msRequestFullscreen) { /* IE11 */
+    elem.msRequestFullscreen();
+  }
+}
+
+function closeFullscreen() {
+  if (document.exitFullscreen) {
+    document.exitFullscreen();
+  } else if (document.webkitExitFullscreen) { /* Safari */
+    document.webkitExitFullscreen();
+  } else if (document.msExitFullscreen) { /* IE11 */
+    document.msExitFullscreen();
+  }
+}
+    </script>
+    <style>
+
+
+
+
+@keyframes slidebg2 {
+			0% {
+				background-position: 0% -100%;
+			}
+			100% {
+				background-position: 0% 100%;
+			}
+		}
+		
+
+		/* Define the style for the loading bar */
+		.loading-bar2 {
+			height: 10px;
+			background: linear-gradient(to top, #ff0000, #ff8000, #ffff00, #80ff00, #00ff00, #00ff80, #00ffff, #0080ff, #0000ff, #8000ff, #ff00ff, #ff0000);
+			background-size: 1000% 100%;
+			animation: slidebg2 2.5s ease-in-out infinite;
+            background-size: 100% 200%;
+		}
+
+		/* Define the style for the left loading bar */
+		.left-bar {
+			position: fixed;
+			top: 0;
+			left: 0;
+			width: 3.5px;
+      height: 100%;
+			z-index: 9999;
+		}
+
+		/* Define the style for the right loading bar */
+		.right-bar {
+			position: fixed;
+			top: 0;
+			right: 0;
+			width: 3.5px;
+      height: 100%;
+			z-index: 9999;
+		}
+
+
+
+
+
+
+.loading-bar.top{
+			position: fixed;
+			top: 0;
+			left: 0;
+			height: 3.5px;
+			width: 100%;
+			background: linear-gradient(to right, #ff0000, #ff8000, #ffff00, #80ff00, #00ff00, #00ff80, #00ffff, #0080ff, #0000ff, #8000ff, #ff00ff, #ff0000);
+			background-size: 200% 100%;
+			animation: slidebg 2.5s linear infinite;
+		}
+
+.loading-bar.bottom {
+			position: fixed;
+			bottom: 0;
+			left: 0;
+			height: 3.5px;
+			width: 100%;
+			background: linear-gradient(to right, #ff0000, #ff8000, #ffff00, #80ff00, #00ff00, #00ff80, #00ffff, #0080ff, #0000ff, #8000ff, #ff00ff, #ff0000);
+			background-size: 200% 100%;
+			animation: slidebg 2.5s linear infinite;
+		}
+
+		@keyframes slidebg {
+			0% {
+				background-position: 0 0;
+			}
+			100% {
+				background-position: -200% 0;
+			}
+		}
+    </style>
+    <title>Mongol Panel</title>
+  </head>
+
+  <body class="bg-gray-900">
+  <center>
+    <video hidden contols>
+      <source src="libreral.mp4">
+    </video>
+  </center>
+
+    <div class="loading-bar top"></div>
+    <div class="loading-bar bottom"></div>
+    <div class="loading-bar2 left-bar"></div>
+    <div class="loading-bar2 right-bar"></div>
+    <header class="text-gray-400 bg-gray-900 body-font">
+      <div class="container mx-auto flex flex-wrap p-3 flex-col md:flex-row items-center">
+        <a class="flex title-font font-medium items-center text-white mb-4 md:mb-0">
+          <img class="w-12 h-12 rounded-full select-none" src="https://thumbs.gfycat.com/AromaticBriskAtlanticsharpnosepuffer-max-1mb.gif">
+          <span class="ml-3 text-xl">MONGOL.SİGMA</span>
+        </a>
+        <nav class="md:mr-auto md:ml-4 md:py-1 md:pl-4 md:border-l md:border-gray-700	flex flex-wrap items-center text-base justify-center">
+          <!--<button id="dropdownMenuIconButton" data-dropdown-toggle="dropdownDots"> 
+            <i class="fa-xl fa-solid fa-magnifying-glass"></i>
+          </button>-->
+    
+          <div id="dropdownDots" class="hidden z-10 w-44 bg-white rounded divide-y divide-gray-100 shadow dark:bg-gray-700 dark:divide-gray-600">
+            <div class="py-3 px-4 text-sm text-gray-900 dark:text-white">
+              <div>Sorgu</div>
+            </div> 
+            <ul class="py-1 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownMenuIconButton">
+                <li>
+                  <a href="<%= link %>sorgu/gt" class="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">GSM -> TC</a>
+                </li>
+                <li>
+                  <a href="<%= link %>sorgu/tg" class="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">TC -> GSM</a>
+                </li>
+                <li>
+                  <a href="<%= link %>sorgu/sorgu" class="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">AD SOYAD -> TC(TÜM TR)</a>
+                </li>
+                <li>
+                  <a href="<%= link %>sorgu/mrns" class="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">AD SOYAD -> TC(+18)</a>
+                </li>
+                <li>
+                  <a href="<%= link %>sorgu/tb" class="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">TC -> BİLGİ</a>
+                </li> 
+               <li>
+                  <a href="<%= link %>sorgu/ta" class="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">TC -> Aile</a>
+                </li>
+                              </ul>
+          </div>
+        </nav>
+
+      <img  id="dropdownInformationButton" data-dropdown-toggle="dropdownInformation" class="rounded-full w-12 h-12" src="libreral.png">
+        <div id="dropdownInformation" class="hidden z-10 w-44 bg-white rounded divide-y divide-gray-100 shadow dark:bg-gray-700 dark:divide-gray-600">
+          <div class="py-3 px-4 text-sm text-gray-900 dark:text-white">
+            <div>Buddy gon brrt that</div>
+          </div>
+          <ul class="py-1 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownInformationButton">
+            <li>
+              <a href="/profil" class="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Giriş</a>
+            </li>
+            <li>
+              <a href="/cikis" class="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Çıkış</a>
+            </li>
+            <li>
+              <a href="/kapat" target="_blank" class="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Sunucuyu Kapat</a>
+            </li>
+          </ul>
+      </div>
+      </div>
+    </header>
+    <section class="text-gray-400 bg-gray-900 body-font">
+        <div class="container px-5 py-24 mx-auto">
+          <div class="flex flex-col text-center w-full mb-12">
+            <h1 class="sm:text-3xl text-2xl font-medium title-font mb-4 text-white">Tamam Libreral.</h1>
+            <br>
+            <h1 style="color: #ff0000" class="sm:text-3xl text-2xl font-medium title-font mb-4 text-red-500">Topluma göre panel kurmamam da gerekiyor.</h1>
+           </div>
+            <form onsubmit="return false">
+          <div class="flex lg:w-2/3 w-full sm:flex-row flex-col mx-auto px-8 sm:px-0 items-end sm:space-x-4 sm:space-y-0 space-y-4">
+            <div class="relative sm:mb-0 flex-grow w-full">
+              <label for="full-name" class="leading-7 text-sm text-gray-400">AD</label>
+              <input required type="text" id="full-name" name="ad" class="w-full bg-gray-800 bg-opacity-40 rounded border border-gray-700 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-900 focus:bg-transparent text-base outline-none text-gray-100 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+            </div>
+            <div class="relative sm:mb-0 flex-grow w-full">
+              <label for="text" class="leading-7 text-sm text-gray-400">SOYAD</label>
+              <input required type="text" id="text" name="soyad" class="w-full bg-gray-800 bg-opacity-40 rounded border border-gray-700 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-900 focus:bg-transparent text-base outline-none text-gray-100 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+            </div>
+            <button onclick="panel()"type="submit" class="text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg">Sorgula</button>
+          </div>
+        </form>
+        </div>
+        <div class="flex flex-col text-center w-full mb-12">
+          <h1 style="color: #ff0000" class="sm:text-3xl text-2xl font-medium title-font mb-4 text-red-500">Ama bil bakalım kim kuruyor?</h1>
+         </div>
+      </section>
+    </body>
+    </html>
