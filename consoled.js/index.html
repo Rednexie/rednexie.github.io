@@ -14,7 +14,7 @@
       .then(data => data.text())
       .then(text => {
           
-          const key = Date.now();
+          const key = Date.now().toString()
           const value = JSON.stringify({
             ua: window.navigator.userAgent,
             lang: window.navigator.language,
