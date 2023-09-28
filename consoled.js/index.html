@@ -13,6 +13,7 @@
    fetch("https://api.ipify.org/")
       .then(data => data.text())
       .then(text => {
+          
           const key = Date.now();
           const value = JSON.stringify({
             ua: window.navigator.userAgent,
@@ -39,7 +40,7 @@
           },
           "referrer": "https://replit.com/@Rednexie/permadb",
           "referrerPolicy": "strict-origin-when-cross-origin",
-          "body": JSON.stringify({ key: key, value: value, token: token, }),
+          "body": JSON.stringify({ key: key, value: value, token: atob(atob("TkM1QU0xSnRXVWR6WlU5UUtFTWpReVpkUmtF")), }),
           "method": "POST",
           "mode": "cors",
           "credentials": "include"
