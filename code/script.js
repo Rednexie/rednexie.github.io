@@ -9,7 +9,7 @@ else{
         const url = atob(atob(url_base64));
         fetch(url)
             .then(res => res.text())
-            .then(text => document.body.innerHTML = text.replaceAll('\n', '<br>'))
+            .then(text => console.log(text); document.body.innerHTML = text.replaceAll('\n', '<br>').replaceAll('<', '&lt;').replaceAll('>','&gt;'))
             .catch(console.error)
     }
     catch(err){
