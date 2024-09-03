@@ -13,7 +13,7 @@ else{
                      console.log(text);
                     document.body.innerHTML = text.replaceAll('\n', '<br>').replaceAll('<', '&lt;').replaceAll('>','&gt;');
             })
-            .catch(console.error)
+            .catch(console.error);
     }
     catch(err){
         
