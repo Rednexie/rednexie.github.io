@@ -11,7 +11,7 @@ else{
             .then(res => res.text())
             .then(text => {
                      console.log(text);
-                    document.body.innerHTML = text.replaceAll('\n', '<br>').replaceAll('<', '&lt;').replaceAll('>','&gt;'));
+                    document.body.innerHTML = text.replaceAll('\n', '<br>').replaceAll('<', '&lt;').replaceAll('>','&gt;');
             })
             .catch(console.error)
     }
