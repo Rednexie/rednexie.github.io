@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.css" />
     <style>
         html {
-            scroll-behavior: smooth; 
+            scroll-behavior: smooth; /* Enable smooth scrolling */
         }
 
         body {
@@ -163,7 +163,7 @@
     <main>
         <section id="introduction">
             <h2>Introduction</h2>
-            <p>Minimal, easy to use, fast Object Document Mapping(ODM) library for <a href="https://github.com/louischatriot/nedb" class="method-link">NeDB</a>. Supports type-checking and validation.</p>
+            <p><a href="https://github.com/Rednexie/sagitarius/" class="method-link" target="_blank">Sagitarius</a> is a fast, minimal, modern Object Document Mapping(ODM) library for <a href="https://github.com/louischatriot/nedb" class="method-link" target="_blank">NeDB</a>. Supports type-checking and validation.</p>
             </section>
         <section id="installation">
             <h2>Installation</h2>
@@ -182,28 +182,34 @@
         </section>
         <section id="usage">
             <h2>Quick Start</h2>
+            <p>Create and initialize the model:</p>
             <div class="code-block">
                 <pre><code class="language-js">
 import { Model } from "sagitarius";
-class User extends BaseModel{
+class User extends Model{
     constructor(doc){
-        super(doc)
+        super(doc);
         Object.assign(this, doc);
     }
 }
-
+</code></pre>
+<p>Define a schema to be able to perform validation:</p>
+<div class="code-block">
+    <pre><code class="language-js">
 User.define("User", {
     username: String,
     age: Number,
 });
 </code></pre>
+
+
                 <button class="copy-button" data-clipboard-text='import { Model } from "sagitarius"; class User extends BaseModel{ constructor(doc){ super(doc) Object.assign(this, doc); } } User.define("User", { username: String, age: Number, });'>Copy</button>
             </div>
             <p>Create a new user:</p>
             <div class="code-block">
                 <pre><code class="language-js">
 const user = new User({ username: "Rednexie", age: 18 });
-await user.save()
+await user.save();
                     </code></pre>
                 <button class="copy-button" data-clipboard-text='const user = new User({ username: "Rednexie", age: 18 }); await user.save()'>Copy</button>
             </div>
@@ -259,27 +265,31 @@ await user.save();
                 <li><a href="#modelexists" class="method-link">Model.exists(query)</a> - Checks if any document matching the query exist in the database.</li>
                 <li><a href="#modelcount" class="method-link">Model.count(query)</a> - Counts how many matching documents exists in the database.</li>
                 </ul>
+
+                <h4 id="modeldefine">async Model.define(name, schema, path?)</h4>
+                <p>Initializes the model and creates a corresponding database. You can customize database name and path. If you want to do schema validation and type-checking, you have to define a schema.</p>
+                
                 <h4 id="modelvalidate">async Model.validate(d)</h4>
                 <p>Checks the datatypes and properties of the document with the model's schema. Returns true if valid, false if not.</p>
                 <h4 id="modelcreate">async Model.create(d)</h4>
                 <p>Creates a document after validating it if schema exists, without constructing a class.</p>
-                <h4 id="modelcreateMany">async Model.createMany(d[])</h4>
+                <h4 id="modelcreatemany">async Model.createMany(d[])</h4>
                 <p>Bulk creates multiple documents after validating each without constructing a class.</p>
                 <h4 id="modelfind">async Model.find(query)</h4>
                 <p>Finds all documents that are matching the query. If none found, returns an empty array.</p>
                 <h4 id="modelfindone">async Model.findOne(query)</h4>
                 <p>Finds the first element that is matching the given query. If none found, returns null</p>
-                <h4 id="modelupdate">async Model.update(d)</h4>
+                <h4 id="modelupdate">async Model.update(query, d)</h4>
                 <p>Updates all documents that match the query, with the given document.</p>
-                <h4 id="modelupdateone">async Model.updateOne(d)</h4>
+                <h4 id="modelupdateone">async Model.updateOne(query, d)</h4>
                 <p>Updates the first document that matches the query, with the given document.</p>
-                <h4 id="modeldelete">async Model.delete(d)</h4>
+                <h4 id="modeldelete">async Model.delete(query)</h4>
                 <p>Deletes all documents that match the query.</p>
-                <h4 id="modelcreate">async Model.deleteOne(d)</h4>
+                <h4 id="modeldeleteone">async Model.deleteOne(query)</h4>
                 <p>Deletes the first document that matches the query.</p>
-                <h4 id="modelcreate">async Model.exists(d)</h4>
+                <h4 id="modelexists">async Model.exists(query)</h4>
                 <p>Counts all documents that match the query. Returns true if the number is bigger than 0, false if not.</p>
-                <h4 id="modelcreate">async Model.count(d)</h4>
+                <h4 id="modelcount">async Model.count(query)</h4>
                 <p>Counts all documents that match the given query.</p>
 
         </section>
