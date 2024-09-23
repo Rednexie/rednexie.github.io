@@ -1,30 +1,189 @@
-<h1 align="center">Sagitarius</h1>
-<h2 align="center"><a href="#introduction">Introduction</a></h2>
-<h2 align="center"><a href="#installation">Installation</a></h2>
-<h2 align="center"><a href="#quick-start">Quick Start</a></h2>
-<h2 align="center"><a href="#api-reference">API Reference</a></h2>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sagitarius</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.css" />
+    <style>
+        html {
+            scroll-behavior: smooth; /* Enable smooth scrolling */
+        }
 
+        body {
+            font-family: Arial, sans-serif; /* Arial font */
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+            color: #333;
+        }
 
-## Introduction
+        header {
+            background: #1263bf;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
 
+        h1 {
+            font-size: 5em; /* Bigger font size */
+            background: linear-gradient(to bottom, #acfaf9,#83b9f7, #f2daf2); /* Gradient from gold to red to magenta */
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin: 0;
+            display: inline-block; /* Ensures gradient applies correctly */
+        }
 
-Minimal, easy to use, fast Object Document Mapping(ODM) library for NeDB. Supports type-checking and validation.
+        nav {
+            background: #1263bf; /* Navbar background color */
+            position: sticky; /* Make the navbar sticky */
+            top: 0; /* Stick to the top */
+            height: 8vh;
+            align-content: center;
+            z-index: 1000; /* Ensure it stays above other content */
+        }
 
+        nav ul {
+            list-style: none;
+            padding: 10px 0;
+            text-align: center; /* Center the nav links */
+            margin: 0; /* Reset margin */
+        }
 
-## Installation
-```bash
-npm install sagitarius
-```
-```bash
-yarn add sagitarius
-```
-```bash
-pnpm add sagitarius
-```
+        nav ul li {
+            display: inline;
+            margin: 0 15px;
+        }
 
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            position: relative;
+            overflow: hidden; /* Ensures the underline stays within the text */
+        }
 
-## Quick Start
-```js
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -5px; /* Position below the text */
+            width: 100%;
+            height: 2px; /* Underline thickness */
+            background: white; /* Underline color */
+            transform: scaleX(0); /* Start hidden */
+            transition: transform 0.3s ease; /* Animation speed */
+        }
+
+        nav ul li a:hover::after {
+            transform: scaleX(1); /* Show underline on hover */
+        }
+
+        main {
+            padding: 20px;
+        }
+
+        h2 {
+            border-bottom: 2px solid #1263bf;
+            padding-bottom: 10px;
+        }
+
+        .code-block {
+            position: relative; /* For positioning the button */
+            margin-bottom: 20px; /* Space between code blocks */
+        }
+
+        pre {
+            background: #e9e9e9;
+            padding: 10px;
+            border-radius: 5px;
+            overflow: auto;
+        }
+
+        .copy-button {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: #1263bf;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background 0.3s;
+        }
+
+        .copy-button:hover {
+            background: #3b78c3;
+        }
+
+        footer {
+            text-align: center;
+            padding: 10px;
+            background: #1263bf;
+            color: white;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+        }
+
+        .method-link {
+            color: #1263bf; /* Match the main color */
+            text-decoration: none;
+            transition: text-decoration 0.3s;
+        }
+
+        .method-link:hover {
+            text-decoration: underline; /* Underline on hover */
+        }
+
+        .footer-link {
+            color: white; /* Link color in footer */
+            text-decoration: none; /* No underline */
+        }
+
+        .footer-link:hover {
+            text-decoration: underline; /* Underline on hover */
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Sagitarius</h1>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="#introduction">Introduction</a></li>
+            <li><a href="#installation">Installation</a></li>
+            <li><a href="#usage">Quick Start</a></li>
+            <li><a href="#api">API Reference</a></li>
+        </ul>
+    </nav>
+    <main>
+        <section id="introduction">
+            <h2>Introduction</h2>
+            <p>Minimal, easy to use, fast Object Document Mapping(ODM) library for <a href="https://github.com/louischatriot/nedb" class="method-link">NeDB</a>. Supports type-checking and validation.</p>
+            </section>
+        <section id="installation">
+            <h2>Installation</h2>
+            <div class="code-block">
+                <pre><code class="language-shell">npm install sagitarius</code></pre>
+                <button class="copy-button" data-clipboard-text="npm install sagitarius">Copy</button>
+            </div>
+            <div class="code-block">
+                <pre><code class="language-shell">yarn add sagitarius</code></pre>
+                <button class="copy-button" data-clipboard-text="yarn add sagitarius">Copy</button>
+            </div>
+            <div class="code-block">
+                <pre><code class="language-shell">pnpm add sagitarius</code></pre>
+                <button class="copy-button" data-clipboard-text="pnpm add sagitarius">Copy</button>
+            </div>
+        </section>
+        <section id="usage">
+            <h2>Quick Start</h2>
+            <div class="code-block">
+                <pre><code class="language-js">
 import { Model } from "sagitarius";
 class User extends BaseModel{
     constructor(doc){
@@ -37,90 +196,119 @@ User.define("User", {
     username: String,
     age: Number,
 });
-```
-
-
-Create a new user:
-
-```js
+</code></pre>
+                <button class="copy-button" data-clipboard-text='import { Model } from "sagitarius"; class User extends BaseModel{ constructor(doc){ super(doc) Object.assign(this, doc); } } User.define("User", { username: String, age: Number, });'>Copy</button>
+            </div>
+            <p>Create a new user:</p>
+            <div class="code-block">
+                <pre><code class="language-js">
 const user = new User({ username: "Rednexie", age: 18 });
 await user.save()
-```
-
-
-Update user properties:
-
-```js
+                    </code></pre>
+                <button class="copy-button" data-clipboard-text='const user = new User({ username: "Rednexie", age: 18 }); await user.save()'>Copy</button>
+            </div>
+            <p>Update user properties:</p>
+            <div class="code-block">
+                <pre><code class="language-js">
 user.age = 19;
 await user.save();
-```
+                    </code></pre>
+                <button class="copy-button" data-clipboard-text="user.age = 19; await user.save();">Copy</button>
+            </div>
+        </section>
+        <section id="api">
+            <h2>API Reference</h2>
+            <h3>Instance Methods</h3>
+            <ul>
+                <li><a href="#save" class="method-link">save()</a> - Saves the new or updated instance to the database.</li>
+                <li><a href="#delete" class="method-link">delete()</a> - Removes the instance from the database.</li>
+                <li><a href="#tojson" class="method-link">toJSON()</a> - Converts the instance to a JavaScript Object.</li>
+                <li><a href="#validate" class="method-link">validate()</a> - If the schema exists, checks if the instance is valid.</li>
 
-## API Reference
+            </ul>
+            
+            <h4 id="save">async instance.save()</h3>
+            <p>Creates a new instance of the model with the provided document.</p>
 
-### Instance Methods
-<ul>
-<li><a href="#save">save()</a> Saves the new or updated instance to the database.</li>
-<li><a href="#delete">delete()</a> Saves the new or updated instance to the database.</li>
-<li><a href="#tojson">toJSON()</a> Saves the new or updated instance to the database.</li>
-<li><a href="#validate">validate()</a> Saves the new or updated instance to the database.</li>
-</ul>
+            <h4 id="delete">async instance.delete()</h3>
+            <p>Deletes the document from the database.</p>
 
-<strong id="save">async interface.save()</strong>
-<br>Creates a new instance of the model with the provided document.
+            <h4 id="tojson">instance.toJSON()</h3>
+            <p>Converts the document from the database to a JavaScript Object.</p>
 
-
-<strong id="delete">async interface.delete()</strong>
-<br>Deletes the document from the database.
-
-
-<strong id="tojson">async interface.toJSON()</strong>
-<br>Converts the document from the database to a JavaScript Object.
-
-
-<strong id="validate">async interface.validate()</strong>
-<br>Checks the datatypes and properties of the document. Returns true if valid, false if not.
-
-
-### Model Methods
-
-<ul>
-
-<li><a href="#modeldefine" class="method-link">Model.define(name, schema, path?)</a> - Creates a new database model.</li>
-<li><a href="#modelvalidate" class="method-link">Model.validate(d)</a> - If the schema exists, checks if the document is valid.</li>
-
-<li><a href="#modelcreate" class="method-link">Model.create(d)</a> - Creates a document and saves it to the database.</li>
-<li><a href="#modelcreatemany" class="method-link">Model.createMany(d[])</a> - Creates multiple documents and saves them to the database.</li>
-<li><a href="#modelfind" class="method-link">Model.find(query)</a> - Finds matching document instances in the database.</li>
-<li><a href="#modelfindone" class="method-link">Model.findOne(query)</a> - Finds a matching document from the database or returns null.</li>
-<li><a href="#modelupdate" class="method-link">Model.update(query, d)</a> - Finds matching documents from the database and updates them with the given document.</li>
-<li><a href="#modelupdateone" class="method-link">Model.updateOne(query, d)</a> - Finds a matching document from the database or returns null.</li>
-<li><a href="#modeldelete" class="method-link">Model.delete(query)</a> - Finds matching documents and removes them from the database.</li>
-<li><a href="#modeldeleteone" class="method-link">Model.deleteOne(query)</a> - Finds a matching document and removes it from the database.</li>
-<li><a href="#modelexists" class="method-link">Model.exists(query)</a> - Checks if any document matching the query exist in the database.</li>
-<li><a href="#modelcount" class="method-link">Model.count(query)</a> - Counts how many matching documents exists in the database.</li>
-</ul>
+            <h4 id="validate">instance.validate()</h3>
+            <p>Checks the datatypes and properties of the document. Returns true if valid, false if not.</p>
+            
+            
 
 
-<h4 id="modelvalidate">async Model.validate(d)</h4>
-<p>Checks the datatypes and properties of the document with the model's schema. Returns true if valid, false if not.</p>
-<h4 id="modelcreate">async Model.create(d)</h4>
-<p>Creates a document after validating it if schema exists, without constructing a class.</p>
-<h4 id="modelcreateMany">async Model.createMany(d[])</h4>
-<p>Bulk creates multiple documents after validating each without constructing a class.</p>
-<h4 id="modelfind">async Model.find(query)</h4>
-<p>Finds all documents that are matching the query. If none found, returns an empty array.</p>
-<h4 id="modelfindone">async Model.findOne(query)</h4>
-<p>Finds the first element that is matching the given query. If none found, returns null</p>
-<h4 id="modelupdate">async Model.update(d)</h4>
-<p>Updates all documents that match the query, with the given document.</p>
-<h4 id="modelupdateone">async Model.updateOne(d)</h4>
-<p>Updates the first document that matches the query, with the given document.</p>
-<h4 id="modeldelete">async Model.delete(d)</h4>
-<p>Deletes all documents that match the query.</p>
-<h4 id="modelcreate">async Model.deleteOne(d)</h4>
-<p>Deletes the first document that matches the query.</p>
-<h4 id="modelcreate">async Model.exists(d)</h4>
-<p>Counts all documents that match the query. Returns true if the number is bigger than 0, false if not.</p>
-<h4 id="modelcreate">async Model.count(d)</h4>
-<p>Counts all documents that match the given query.</p>
-                    
+            <h3>Model Methods</h3>
+            <ul>
+
+                <li><a href="#modeldefine" class="method-link">Model.define(name, schema, path?)</a> - Creates a new database model.</li>
+                <li><a href="#modelvalidate" class="method-link">Model.validate(d)</a> - If the schema exists, checks if the document is valid.</li>
+
+                <li><a href="#modelcreate" class="method-link">Model.create(d)</a> - Creates a document and saves it to the database.</li>
+                <li><a href="#modelcreatemany" class="method-link">Model.createMany(d[])</a> - Creates multiple documents and saves them to the database.</li>
+                <li><a href="#modelfind" class="method-link">Model.find(query)</a> - Finds matching document instances in the database.</li>
+                <li><a href="#modelfindone" class="method-link">Model.findOne(query)</a> - Finds a matching document from the database or returns null.</li>
+                <li><a href="#modelupdate" class="method-link">Model.update(query, d)</a> - Finds matching documents from the database and updates them with the given document.</li>
+                <li><a href="#modelupdateone" class="method-link">Model.updateOne(query, d)</a> - Finds a matching document from the database or returns null.</li>
+                <li><a href="#modeldelete" class="method-link">Model.delete(query)</a> - Finds matching documents and removes them from the database.</li>
+                <li><a href="#modeldeleteone" class="method-link">Model.deleteOne(query)</a> - Finds a matching document and removes it from the database.</li>
+                <li><a href="#modelexists" class="method-link">Model.exists(query)</a> - Checks if any document matching the query exist in the database.</li>
+                <li><a href="#modelcount" class="method-link">Model.count(query)</a> - Counts how many matching documents exists in the database.</li>
+                </ul>
+                <h4 id="modelvalidate">async Model.validate(d)</h4>
+                <p>Checks the datatypes and properties of the document with the model's schema. Returns true if valid, false if not.</p>
+                <h4 id="modelcreate">async Model.create(d)</h4>
+                <p>Creates a document after validating it if schema exists, without constructing a class.</p>
+                <h4 id="modelcreateMany">async Model.createMany(d[])</h4>
+                <p>Bulk creates multiple documents after validating each without constructing a class.</p>
+                <h4 id="modelfind">async Model.find(query)</h4>
+                <p>Finds all documents that are matching the query. If none found, returns an empty array.</p>
+                <h4 id="modelfindone">async Model.findOne(query)</h4>
+                <p>Finds the first element that is matching the given query. If none found, returns null</p>
+                <h4 id="modelupdate">async Model.update(d)</h4>
+                <p>Updates all documents that match the query, with the given document.</p>
+                <h4 id="modelupdateone">async Model.updateOne(d)</h4>
+                <p>Updates the first document that matches the query, with the given document.</p>
+                <h4 id="modeldelete">async Model.delete(d)</h4>
+                <p>Deletes all documents that match the query.</p>
+                <h4 id="modelcreate">async Model.deleteOne(d)</h4>
+                <p>Deletes the first document that matches the query.</p>
+                <h4 id="modelcreate">async Model.exists(d)</h4>
+                <p>Counts all documents that match the query. Returns true if the number is bigger than 0, false if not.</p>
+                <h4 id="modelcreate">async Model.count(d)</h4>
+                <p>Counts all documents that match the given query.</p>
+
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2024 <a href="https://github.com/Rednexie" target="_blank" class="footer-link">Rednexie</a>
+    </footer>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+    <script>
+        document.querySelectorAll('.copy-button').forEach(button => {
+            button.addEventListener('click', () => {
+                const textToCopy = button.getAttribute('data-clipboard-text')
+                navigator.clipboard.writeText(textToCopy).then(() => {
+                    Toastify({
+                        text: "Copied to clipboard!",
+                        duration: 3000,
+                        close: true,
+                        gravity: "top", // `top` or `bottom`
+                        position: 'right', // `left`, `center` or `right`
+                        style: {
+                            background: "#3b78c3"// Gradient background
+                        },
+                    }).showToast();
+                }).catch(err => {
+                    console.error('Failed to copy: ', err);
+                });
+            });
+        });
+    </script>
+</body>
+</html>
