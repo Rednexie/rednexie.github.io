@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PDF to Text Converter</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .hidden {
+            display: none;
+        }
+        #output {
+            margin-top: 20px;
+            white-space: pre-wrap;
+            background-color: #f9f9f9;
+            border: 1px solid #ccc;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>PDF to Text Converter</h1>
+    <input type="file" id="fileInput" accept="application/pdf" />
+    <div id="progress" class="hidden">Processing...</div>
+    <div id="output"></div>
+
+    <script src="https://cdn.jsdelivr.net/npm/pdfjs-dist@2.16.105/build/pdf.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/tesseract.js/dist/tesseract.min.js"></script>
+    <script>
+        const fileInput = document.getElementById('fileInput');
+        const progressDiv = document.getElementById('progress');
+        const outputDiv = document.getElementById('output');
+
+        fileInput.addEventListener('change', async (event) => {
+            const file = event.target.files[0];
+            if (!file) return;
+
+            outputDiv.textContent = '';
+            progressDiv.classList.remove('hidden');
+            progressDiv.textContent = 'Processing...';
+
+            const fileReader = new FileReader();
+            fileReader.onload = async (e) => {
+                const pdfData = new Uint8Array(e.target.result);
+                const pdf = await pdfjsLib.getDocument(pdfData).promise;
+
+                let extractedText = '';
+                for (let i = 1; i <= pdf.numPages; i++) {
+                    const page = await pdf.getPage(i);
+                    const viewport = page.getViewport({ scale: 2 });
+                    const canvas = document.createElement('canvas');
+                    const context = canvas.getContext('2d');
+                    canvas.width = viewport.width;
+                    canvas.height = viewport.height;
+
+                    const renderContext = {
+                        canvasContext: context,
+                        viewport: viewport,
+                    };
+                    await page.render(renderContext).promise;
+
+                    const imageData = canvas.toDataURL();
+                    const text = await Tesseract.recognize(imageData, 'eng', {
+                        logger: (m) => console.log(m),
+                    });
+                    extractedText += text.data.text + '\n';
+                }
+
+                progressDiv.classList.add('hidden');
+                outputDiv.textContent = extractedText;
+            };
+
+            fileReader.readAsArrayBuffer(file);
+        });
+    </script>
+</body>
+</html>
