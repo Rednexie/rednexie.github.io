@@ -1,4 +1,4 @@
 {
-  "version": "0.1.0",
+  "version": "0.1.1",
   "message": "Araç sayfasına ayrıntılı sefer bilgisi eklendi. Durak bazlı konum hesaplama istemci tarafına taşındı. Çöküntüler için alternatif iett aynası seçeneği eklendi. Varacak otobüslerin konum güncelliği belirtildi.",
 }
